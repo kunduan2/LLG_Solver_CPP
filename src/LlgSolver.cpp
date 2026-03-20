@@ -64,11 +64,8 @@ void LlgSolver::solve(
                 Htoty = Hext1y + matparams.Aexch*Hey;
                 Htotz = Hext1z + matparams.Aexch*Hez;
 
-            -[m\'[[ll
-                
-                
-                
-                '/   mx, my, mz, 
+                dmdt.calculate(
+                    mx, my, mz, 
                     Htotx, Htoty, Htotz,
                     matparams.randD, dt, matparams.alpha, matparams.gamma_gyro,
                     gen, gauss, 
