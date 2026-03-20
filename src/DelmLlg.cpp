@@ -17,7 +17,7 @@ void DelmLlg::calculate(
     double Htz,
 
     //parameters 
-    double randD, 
+    double D, 
     double dt, 
     double alpha, 
     double gamma_gyro,
@@ -26,13 +26,14 @@ void DelmLlg::calculate(
     std::mt19937 &gen,
     std::normal_distribution<double> &gauss,
 
-    // output variables
-    double &dmx, double &dmy, double &dmz){
+    // output variables to update
+    double &dmx, double &dmy, double &dmz
+){
 
     // random fields
-    double eta_x = std::sqrt(2.0 * randD * dt) * gauss(gen);
-    double eta_y = std::sqrt(2.0 * randD * dt) * gauss(gen);
-    double eta_z = std::sqrt(2.0 * randD * dt) * gauss(gen);
+    double eta_x = std::sqrt(2.0 * D * dt) * gauss(gen);
+    double eta_y = std::sqrt(2.0 * D * dt) * gauss(gen);
+    double eta_z = std::sqrt(2.0 * D * dt) * gauss(gen);
 
     // Add random field with the total fields from all sources
     Htx += eta_x;

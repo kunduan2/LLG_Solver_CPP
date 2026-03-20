@@ -12,14 +12,9 @@ using namespace std;
 
 
 int main() {
-
-    /* Define all the parameters and variables used to solve the LLG */
     
     // Exchange
     const double Aexch = .250; 
-
-    // Parameters to define the time dependent  External field H(t)
-    const double t_switch = 50.0;  
 
     // Physical parameters for LLG
     const double gamma_gyro = 1.0;
@@ -67,15 +62,19 @@ int main() {
    print2Darr(Mx, Nx, Ny);
 
 
+
+    // Define struct: all the parameters and variables used to solve the LLG 
+    MaterialParameters matparams{
+        1.0,   // Bext
+        Aexch, // Aexch
+        D,     // D
+        alpha, // alpha
+        gamma_gyro // gamma_gyro
+    };
+
     LlgSolver llg_solver;
     llg_solver.solve(
-        // Physics
-        50.0,   // t_switch
-        1.0,    // Bext
-        1.0,    // Aexch
-        1.0,    // D
-        0.1,   // alpha
-        1.0,    // gamma_gyro
+        matparams,
 
         // grid/time
         Nt,      // Nt

@@ -1,14 +1,32 @@
+/*
+Computes the time derivative of the magnetization according to the LLG equation.
+
+1. Takes the total effective magnetic field acting on the spin
+   (including exchange, external, and any other internal contributions),
+   and adds a stochastic thermal field.
+
+2. Uses the time step dt for time integration.
+
+3. For a given magnetization vector (mx, my, mz),
+   computes the corresponding increments (dmx, dmy, dmz).
+
+4. These increments are later used to update the magnetization
+   components in the solver.
+*/
+
+
 #ifndef DELMLLG_H
 #define DELMLLG_H
 
 #include <random>
+
 
 class DelmLlg{
 public:
     DelmLlg() = default;
 
     void calculate(
-            // mi's
+        // mi's
         double mx, 
         double my, 
         double mz,

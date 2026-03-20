@@ -1,3 +1,44 @@
+/*
+===============================================================================
+ExternalField Class
+-------------------------------------------------------------------------------
+Provides different time-dependent external magnetic field configurations
+for use in LLG simulations.
+
+All fields are applied along the z-direction only:
+    H = (0, 0, Hz)
+
+Sign convention:
+    The field is applied as Hz = -B(t)
+    (negative sign consistent with chosen energy/LLG convention).
+
+Implemented field types:
+
+1) Static DC Field
+   - Time independent
+   - Hz = -B0
+
+2) AC Field
+   - Sinusoidal time dependence
+   - Hz = -B0 sin(omega t)
+
+3) Step Field
+   - Constant field before time t0
+   - Switched off after t0
+   - Hz = -B0  for t < t0
+   - Hz = 0    for t >= t0
+
+All functions:
+    - Take time t as input
+    - Return field components by reference
+    - Do not store internal state
+    - Designed for lightweight inline evaluation inside time integrators
+
+Units:
+    - B0 must be consistent with the chosen gamma and time units
+    - omega in angular frequency units
+===============================================================================
+*/
 
 #ifndef EXTERNALFIELD_H
 #define EXTERNALFIELD_H
@@ -30,30 +71,23 @@ class ExternalField{
             Hy = 0.0;
             Hz = (t<t0) ? -B0 : 0;
         }
-        
-
-
-
 };
 
 #endif
 
 
-
-// sample test code
-
 // #include "ExternalField.h"
 // #include <iostream>
-// #include <cmath>
-// using namespace std;
 
 // int main() {
-//     double h = 3;
+//     double t = 0.0;        // time
+//     double B0 = 3.0;       // field magnitude
+
 //     double h1x, h1y, h1z;
 
 //     ExternalField Bext;
-//     Bext.staticB(h, h1x, h1y, h1z) ;
+//     Bext.staticB(t, B0, h1x, h1y, h1z);
 
-//     std::cout<<h1z << std::endl;    
+//     std::cout << h1z << std::endl;    
 //     return 0;
 // }
