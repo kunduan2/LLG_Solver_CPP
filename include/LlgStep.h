@@ -15,16 +15,15 @@ Computes the time derivative of the magnetization according to the LLG equation.
 */
 
 
-#ifndef DELMLLG_H
-#define DELMLLG_H
+#ifndef LLGSTEP_H
+#define LLGSTEP_H
 
 #include <random>
 
 
-class DelmLlg{
+class LlgStep{
 public:
-    DelmLlg() = default;
-
+LlgStep() = default;
     void calculate(
         // mi's
         double mx, 
@@ -36,17 +35,14 @@ public:
         double Hty, 
         double Htz,
 
-        //parameters 
-        double D, 
-        double dt, 
-        double alpha, 
+        // double D,
+        // double dt,
+        double alpha,
         double gamma_gyro,
 
-        // RNG
-        std::mt19937 &gen,
-        std::normal_distribution<double> &gauss,
+        // std::mt19937 &gen,
+        // std::normal_distribution<double> &gauss,
 
-        // output variables
         double &dmx, double &dmy, double &dmz
     );
 

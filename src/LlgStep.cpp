@@ -1,11 +1,11 @@
-#include "DelmLlg.h"
+#include "LlgStep.h"
 #include <random>
 #include <cmath>
 
 
 
 
-void DelmLlg::calculate(
+void LlgStep::calculate(
     // mi's
     double mx, 
     double my, 
@@ -16,31 +16,31 @@ void DelmLlg::calculate(
     double Hty, 
     double Htz,
 
-    //parameters 
-    double D, 
-    double dt, 
+    // //parameters 
+    // double D, 
+    // double dt, 
     double alpha, 
     double gamma_gyro,
 
-    // RNG
-    std::mt19937 &gen,
-    std::normal_distribution<double> &gauss,
+    // // RNG
+    // std::mt19937 &gen,
+    // std::normal_distribution<double> &gauss,
 
     // output variables to update
     double &dmx, double &dmy, double &dmz
 ){
 
-    // random fields
-    double eta_x = std::sqrt(2.0 * D * dt) * gauss(gen);
-    double eta_y = std::sqrt(2.0 * D * dt) * gauss(gen);
-    double eta_z = std::sqrt(2.0 * D * dt) * gauss(gen);
+    // // random fields
+    // double eta_x = std::sqrt(2.0 * D * dt) * gauss(gen);
+    // double eta_y = std::sqrt(2.0 * D * dt) * gauss(gen);
+    // double eta_z = std::sqrt(2.0 * D * dt) * gauss(gen);
 
-    // Add random field with the total fields from all sources
-    Htx += eta_x;
-    Hty += eta_y;
-    Htz += eta_z;
+    // // Add random field with the total fields from all sources
+    // Htx += eta_x;
+    // Hty += eta_y;
+    // Htz += eta_z;
 
-    // m \times Ht
+    // m cross Ht
     double cx = my * Htz - mz * Hty;
     double cy = mz * Htx - mx * Htz;
     double cz = mx * Hty - my * Htx;
