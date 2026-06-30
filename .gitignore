@@ -1,4 +1,25 @@
-/build/
+# Build artifacts
+build/
 *.o
 *.out
+*.exe
 
+# Simulation output
+*.dat
+*.csv
+data/
+!data/.gitkeep        # keep the empty data/ directory tracked
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Editor/OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local archive (not for the repo)
+archive/
