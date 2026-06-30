@@ -27,7 +27,7 @@ ExchangeField::ExchangeField(int Nx, int Ny): Nx_(Nx), Ny_(Ny) {}
 void ExchangeField::calculate(
     int i, int j,
     double* Mx, double* My, double* Mz,
-    double &Hexch_x, double &Hexch_y, double &Hexch_z
+    double& Hexch_x, double& Hexch_y, double& Hexch_z
     ){
     int ip = (i + 1) % Nx_;       // \equiv: int i_right  = (i == N-1) ? 0 : i+1;
     int im = (i - 1 + Nx_) % Nx_;  // \equiv: int i_left  = (i == 0) ? N-1 : i-1;

@@ -10,9 +10,16 @@
 Functions for general mathematical operations and data manipulation
 */
 
-// RNG (translation-unit local)
-static std::mt19937 gen(42);
-static std::normal_distribution<double> gauss(0.0, 1.0);
+// RNG-generator: Uniform distribution
+inline double rand_uniform(
+    std::mt19937& gen,
+    double a,
+    double b
+) {
+    std::uniform_real_distribution<double> uni(a,b);
+
+    return uni(gen);
+}
 
 // Normalizes a 3D vector to unit length
 inline void normalize(double &mx, double &my, double &mz){
@@ -22,10 +29,10 @@ inline void normalize(double &mx, double &my, double &mz){
     mz /= n;
 }
 
-inline double norm(double x, double y, double z){
-    return x*x + y*y + z*z;
+// inline double norm(double x, double y, double z){
+//     return x*x + y*y + z*z;
 
-}
+// }
 // Converts 2D grid indices (i,j) to 1D array index (row-major order)
 inline int convert_idx_2dto1D(int i, int j, int Nx, int Ny){
     return i * Nx + j;

@@ -11,8 +11,8 @@ mz = data[:,3]
 
 plt.figure(figsize=(8,5))
 
-plt.plot(t, mx, linewidth=2, label="mx")
-plt.plot(t, my, linewidth=2, label="my")
+# plt.plot(t, mx, linewidth=2, label="mx")
+# plt.plot(t, my, linewidth=2, label="my")
 plt.plot(t, mz, linewidth=2, label="mz")
 
 plt.xlabel("Time")

@@ -50,7 +50,7 @@ class ExternalField{
         ExternalField() = default;
 
         // ---------- Static DC Field ---------
-        inline void staticB(double t, double B0, double &Hx, double &Hy, double &Hz){
+        inline void staticB(double B0, double &Hx, double &Hy, double &Hz){
             Hx = 0.0;
             Hy = 0.0;
             Hz = -B0;
