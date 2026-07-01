@@ -7,6 +7,9 @@ struct MaterialParameters {
     double D;           // Noise amplitude
     double alpha;       // Damping coefficient
     double gamma_gyro;  // Gyromagnetic ratio
+    double D_x;       // DMI vector x-component
+    double D_y;       // DMI vector y-component
+    double D_z;       // DMI vector z-component
 };
 
 struct SimulationParameters {
