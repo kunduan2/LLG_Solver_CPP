@@ -24,7 +24,7 @@ Component form of  - ( D x Ssum ),  Ssum = (Sx, Sy, Sz):
 
 class DMIField {
 public:
-    DMIField(int Nx, int Ny, double Dx, double Dy, double Dz);
+    DMIField(int Nx, int Ny, double Dmi_x, double Dmi_y, double Dmi_z);
 
     void calculate(
         int i, int j,
@@ -32,9 +32,9 @@ public:
         double& Hdmi_x, double& Hdmi_y, double& Hdmi_z
     );
 
-    double Dx;   // DMI vector x-component (fixed, lattice spacing absorbed)
-    double Dy;   // DMI vector y-component
-    double Dz;   // DMI vector z-component
+    double Dmi_x;   // DMI vector x-component (fixed, lattice spacing absorbed)
+    double Dmi_y;   // DMI vector y-component
+    double Dmi_z;   // DMI vector z-component
 
 private:
     int Nx_;

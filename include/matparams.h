@@ -2,14 +2,14 @@
 #define MATPARAMS_H
 
 struct MaterialParameters {
-    double Bext;        // External magnetic field
-    double Aexch;       // Exchange stiffness
-    double D;           // Noise amplitude
-    double alpha;       // Damping coefficient
-    double gamma_gyro;  // Gyromagnetic ratio
-    double D_x;       // DMI vector x-component
-    double D_y;       // DMI vector y-component
-    double D_z;       // DMI vector z-component
+    double Bext       = 0.0;   // External magnetic field
+    double Aexch      = 0.0;   // Exchange stiffness
+    double D          = 0.0;   // Noise amplitude
+    double alpha      = 0.0;   // Damping coefficient
+    double gamma_gyro = 1.0;   // Gyromagnetic ratio
+    double Dmi_x      = 0.0;   // DMI vector x-component
+    double Dmi_y      = 0.0;   // DMI vector y-component
+    double Dmi_z      = 0.0;   // DMI vector z-component
 };
 
 struct SimulationParameters {

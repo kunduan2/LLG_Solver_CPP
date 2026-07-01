@@ -21,8 +21,8 @@ DMI vector D = (Dx, Dy, Dz).
 #include "DMIField.h"
 #include "utils.h"
 
-DMIField::DMIField(int Nx, int Ny, double Dx, double Dy, double Dz)
-    : Dx(Dx), Dy(Dy), Dz(Dz), Nx_(Nx), Ny_(Ny) {}
+DMIField::DMIField(int Nx, int Ny, double Dmi_x, double Dmi_y, double Dmi_z)
+    : Dmi_x(Dmi_x), Dmi_y(Dmi_y), Dmi_z(Dmi_z), Nx_(Nx), Ny_(Ny) {}
 
 // -------------------- Field calculations --------------------
 void DMIField::calculate(
@@ -46,7 +46,7 @@ void DMIField::calculate(
     double Sz = Mz[ipj] + Mz[imj] + Mz[ijp] + Mz[ijm];
 
     // h_DMI,i = - ( D x Ssum )
-    Hdmi_x = -(Dy * Sz - Dz * Sy);
-    Hdmi_y = -(Dz * Sx - Dx * Sz);
-    Hdmi_z = -(Dx * Sy - Dy * Sx);
+    Hdmi_x = -(Dmi_y * Sz - Dmi_z * Sy);
+    Hdmi_y = -(Dmi_z * Sx - Dmi_x * Sz);
+    Hdmi_z = -(Dmi_x * Sy - Dmi_y * Sx);
 }
