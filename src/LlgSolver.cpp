@@ -1,6 +1,6 @@
 #include <iostream>
 #include "utils.h"
-#include "matparams.h"
+#include "parameters.h"
 
 // Physical field calculations
 #include "ExchangeField.h"      // Exchange interaction field (ferromagnetic coupling)
@@ -9,7 +9,7 @@
 #include "StochasticField.h"    // Thermal noise: stochastic field with Gaussian distribution
 
 // Dynamics solver
-#include "LlgStep.h"            // Landau-Lifshitz-Gilbert equation formulation
+#include "LlgRhs.h"            // Landau-Lifshitz-Gilbert equation formulation
 #include "LlgSolver.h"          // LLG equation solver: time integration
 // ============================================================================
 
@@ -33,7 +33,7 @@ void LlgSolver::solve(
     ExternalField hext;  // We use static B_ext
     DMIField hdmi(simparams.Nx, simparams.Ny, matparams.Dmi_x, matparams.Dmi_y, matparams.Dmi_z);;
     // StochasticField eta; // No-Need to make instances for static method
-    LlgStep delm;
+    LlgRhs delm;
 
     // // Initialize RNG engine
     // std::mt19937 gen(42);  // seed for reproducibility

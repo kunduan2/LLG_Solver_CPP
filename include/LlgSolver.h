@@ -2,7 +2,7 @@
 #define LLGSOLVER_H
 
 #include <random>
-#include "matparams.h"
+#include "parameters.h"
 // #include <fstream>
 
 // struct GridTimeParams{

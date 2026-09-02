@@ -1,5 +1,5 @@
-#ifndef MATPARAMS_H
-#define MATPARAMS_H
+#ifndef PARAMETERS_H
+#define PARAMETERS_H
 
 struct MaterialParameters {
     double Bext       = 0.0;   // External magnetic field

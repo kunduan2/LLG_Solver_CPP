@@ -1,46 +1,46 @@
 #include "utils.h"
-#include "ExternalField.h"
-#include "ExchangeField.h"
-#include "LlgStep.h"
-#include "LlgSolver.h"
+#include "ExternalField.h"  // h_ext
+#include "ExchangeField.h"  // J_ex
+#include "DMIField.h"      // DMI field
+#include "LlgRhs.h"        // RHS of the equation dm/dt = (...)
+#include "LlgSolver.h"     
 
 #include <iostream>
 #include <random>
 #include <fstream>
 using namespace std;
 
-
-
 int main() {
 
     // -------------------------------------------------------------------------
     // Material parameters
     // -------------------------------------------------------------------------
-    const double kB        = 1.0;    // Boltzmann constant (reduced units)
-    const double T         = 100.0;    // Temperature
-    const double Ms        = 1.0;    // Saturation magnetization
-    const double V         = 1.0;    // Magnetic moment volume
+    const double kB        = 1.0;     // Boltzmann constant (reduced units)
+    const double T         = 100.0;   // Temperature
+    const double Ms        = 1.0;     // Saturation magnetization
+    const double V         = 1.0;     // Magnetic moment volume
     const double alpha     = .001;    // Gilbert damping coefficient
-    const double gamma_gyro= 1.0;    // Gyromagnetic ratio
-    const double Aexch     = 0.250;  // Exchange stiffness
+    const double gamma_gyro= 1.0;     // Gyromagnetic ratio
+    const double Aexch     = 0.250;   // Exchange stiffness
     const double D         = alpha * kB * T / (gamma_gyro * Ms * V); // Noise amplitude
+    const double Bext = 1.0;   // external field strength
 
     // -------------------------------------------------------------------------
     //  Set the struct: MaterialParameters (from above values) and  Simulation parameters
     // -------------------------------------------------------------------------
-
     MaterialParameters matparams{
-        1.0,        // Bext       : external field
-        Aexch,      // Aexch      : exchange stiffness
-        D,          // D          : stochastic noise amplitude
-        alpha,      // alpha      : damping
-        gamma_gyro  // gamma_gyro : gyromagnetic ratio
+        .Bext       = Bext,
+        .Aexch      = Aexch,
+        .D          = D,
+        .alpha      = alpha,
+        .gamma_gyro = gamma_gyro
     };
 
     SimulationParameters simparams{
         5, 5,   // Nx, Ny  : grid dimensions
         5,     // Nt      : number of time steps
-        0.01,   // dt      : time step size
+        0.001,   // dt      : time step size. From the stability analysis using scaling: dt ≤ C/4 ≈ 0.0025–0.025 
+                //            (with C = 0.01–0.1, see note).
     };
     
     // -------------------------------------------------------------------------

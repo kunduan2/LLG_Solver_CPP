@@ -1,11 +1,11 @@
-#include "LlgStep.h"
+#include "LlgRhs.h"
 #include <random>
 #include <cmath>
 
 
 
 
-void LlgStep::calculate(
+void LlgRhs::calculate(
     // mi's
     double mx, 
     double my, 

@@ -15,15 +15,15 @@ Computes the time derivative of the magnetization according to the LLG equation.
 */
 
 
-#ifndef LLGSTEP_H
-#define LLGSTEP_H
+#ifndef LLGRHS_H
+#define LLGRHS_H
 
 #include <random>
 
 
-class LlgStep{
+class LlgRhs{
 public:
-LlgStep() = default;
+LlgRhs() = default;
     void calculate(
         // mi's
         double mx, 

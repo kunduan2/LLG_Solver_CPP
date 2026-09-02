@@ -1,7 +1,7 @@
 #include "utils.h"
-#include "ExternalField.h"
-#include "ExchangeField.h"
-#include "LlgStep.h"
+#include "ExternalField.h"    // h_ext
+#include "ExchangeField.h"    // J_ex
+#include "LlgRhs.h"           // RHS of the equation dm/dt = (...)
 #include "LlgSolver.h"
 
 #include <iostream>
@@ -39,8 +39,9 @@ int main() {
     
     SimulationParameters simparams{
         100, 100,   // Nx, Ny  : grid dimensions
-        50,       // Nt      : number of time steps
-        0.01,   // dt      : time step size
+        500,       // Nt      : number of time steps
+        0.001,   // dt      : time step size. From the stability analysis using scaling: dt ≤ C/4 ≈ 0.0025–0.025 
+                 //            (with C = 0.01–0.1, see note).
     };
 
     // -------------------------------------------------------------------------
@@ -64,7 +65,7 @@ int main() {
     double* Mz = new double[simparams.Nx * simparams.Ny];
 
     // Open a file
-    ofstream fout("test.dat");
+    ofstream fout("test.dat");    //or "data/test.dat": relative to where you run from (root)
     if (!fout.is_open()) {
         cerr << "Error opening file test.dat!" << endl;
         return 1; // or handle error appropriately
